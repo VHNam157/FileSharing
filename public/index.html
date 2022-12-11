@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>FileSharing | GT5</title>
+        <link rel="icon" href="ico/mainicon.ico">
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+    </head>
+    <body>
+        <section>
+            <img src="image/1.png" data-speed="-5" class="layer">
+            <img src="image/2.png" data-speed="5" class="layer">
+            <img src="image/3.png" data-speed="2" class="layer">
+            <img src="image/4.png" data-speed="6" class="layer">
+            <img src="image/5.png" data-speed="8" class="layer">
+            <img src="image/6.png" data-speed="-2" class="layer">
+            <img src="image/7.png" data-speed="4" class="layer">
+            <img src="image/8.png" data-speed="-9" class="layer">
+            <img src="image/9.png" data-speed="6" class="layer">
+            <img src="image/10.png" data-speed="-7" class="layer">
+            <img src="image/11.png" data-speed="-5" class="layer">
+            <img src="image/12.png" data-speed="5" class="layer">
+        </section>
+
+        <div class="app">
+            <div class="screen join-screen active">
+                <div class="form">
+                    <h2>Chia sẻ File trực tuyến</h2>
+                    <div class="form-input">
+                        <button id="sender-start-con-btn">Tạo phòng chia sẻ File</button>
+                    </div>
+
+                    <div class="form-input" id="join-id">
+                    </div>
+
+                    <div class="form-input">
+                        <a href="http://localhost:5000/receiver.html">
+                            <button id="join-room-btn">Tham gia phòng bằng ID có sẵn</button>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+  
+            <div class="screen fs-screen">
+                <div class="file-input">
+                    <label for="file-input" style="color: white;">
+                        Click chọn File mà bạn cần chia sẻ
+                    </label>
+                    <input type="file" id="file-input">
+                </div>
+                <div class="files-list">
+                    <div class="title">Danh sách file đã được chia sẻ</div>
+                    <div class="item">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script type="text/javascript" src="socket.io/socket.io.js"></script>
+        <script type="text/javascript" src="js/code.js"></script>
+        <script type="text/javascript">
+            document.addEventListener("mousemove",parallax);
+            function parallax(e){
+                this.querySelectorAll('.layer').array.forEach(layer=> {
+                    const speed = layer.getAttribute("data-speed")
+                    
+                    const x = (window.innerWidth - e.pageX*speed)
+                    const y = (window.innerHeight - e.pageY*speed)
+
+                    layer.style.transform = "translateX(${x}px) translateY(${y}px)"
+                });
+            }
+        </script>
+    </body>
+</html>
