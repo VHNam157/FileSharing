@@ -47,7 +47,8 @@
 		console.log("Buffer", buffer);
 		fileShare.buffer.push(buffer);
 		fileShare.transmitted += buffer.byteLength;
-		fileShare.progrss_node.innerText = Math.trunc(fileShare.transmitted / fileShare.metadata.total_buffer_size * 100);
+		let prs = (fileShare.transmitted / fileShare.metadata.total_buffer_size * 100);
+		fileShare.progrss_node.innerText = prs.toFixed(2)+ '%';
 		if(fileShare.transmitted == fileShare.metadata.total_buffer_size){
 			console.log("Download file: ", fileShare);
 			download(new Blob(fileShare.buffer), fileShare.metadata.filename);
